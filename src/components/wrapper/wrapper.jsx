@@ -1,16 +1,15 @@
-import { useContext } from 'react'
-import { WeatherContext } from '../../context/weather-context'
-import Card from '../card/card'
-import Loader from '../loader/loader'
-import styles from './wrapper.module.css'
+import React, { useContext } from 'react';
+import { WeatherContext } from '../../context/weather-context';
+import Card from '../card/card';
+import styles from './wrapper.module.css';
 
 const Wrapper = () => {
-	const { daily, error } = useContext(WeatherContext)
+	const { daily, error } = useContext(WeatherContext);
 
 	if (error) {
 		return (<div className={styles.error}>
 			<p>An error has occured</p>
-		</div>)
+		</div>);
 	}
 
 	return (
@@ -18,10 +17,10 @@ const Wrapper = () => {
 			{daily && daily.map(day => {
 				return (
 					<Card key={day.dt} day={day} />
-				)
+				);
 			})}
 		</div>
-	)
-}
+	);
+};
 
-export default Wrapper
+export default Wrapper;

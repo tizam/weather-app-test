@@ -1,15 +1,14 @@
-import { useEffect, useState, useRef, useContext } from 'react'
+import React, { useState, useRef, useContext } from 'react';
 import Map, { FullscreenControl, GeolocateControl, Marker } from 'react-map-gl';
-import axios from 'axios'
-import styles from './App.module.css'
+import styles from './App.module.css';
 import Wrapper from './components/wrapper/wrapper';
 import { PositionContext } from './context/position-context';
-import locationPNG from './location.png'
+import locationPNG from './location.png';
 
 function App() {
-  const geolocateControlRef = useRef(null)
+  const geolocateControlRef = useRef(null);
 
-  const { position, setPosition, address } = useContext(PositionContext)
+  const { position, setPosition, address } = useContext(PositionContext);
 
   const [viewState, setViewState] = useState({
     longitude: 3.066514,
@@ -43,7 +42,7 @@ function App() {
       </Map>
       <Wrapper />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
