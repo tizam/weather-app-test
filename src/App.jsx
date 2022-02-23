@@ -1,14 +1,15 @@
 import { useEffect, useState, useRef, useContext } from 'react'
-import Map, { GeolocateControl } from 'react-map-gl';
+import Map, { FullscreenControl, GeolocateControl, Marker } from 'react-map-gl';
 import axios from 'axios'
 import styles from './App.module.css'
 import Wrapper from './components/wrapper/wrapper';
 import { PositionContext } from './context/position-context';
+import locationPNG from './location.png'
 
 function App() {
   const geolocateControlRef = useRef(null)
 
-  const { position, setPosition } = useContext(PositionContext)
+  const { position, setPosition, address } = useContext(PositionContext)
 
   const [viewState, setViewState] = useState({
     longitude: 3.066514,
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <div className={styles.app}>
+      {address && <h1 className={styles.address}>{address}</h1>}
       <Map
         {...viewState}
         onMove={evt => setViewState(evt.viewState)}
@@ -34,6 +36,10 @@ function App() {
           onGeolocate={(evt) => setPosition(
             { lng: evt.coords.longitude, lat: evt.coords.latitude }
           )} />
+        <FullscreenControl />
+        <Marker longitude={position.lng} latitude={position.lat} anchor="bottom" >
+          <img src={locationPNG} alt='location' style={{ width: 32, height: 32 }} />
+        </Marker>
       </Map>
       <Wrapper />
     </div>
