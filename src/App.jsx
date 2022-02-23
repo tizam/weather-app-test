@@ -31,7 +31,6 @@ function App() {
       >
         <GeolocateControl
           ref={geolocateControlRef}
-          trackUserLocation={true}
           onGeolocate={(evt) => setPosition(
             { lng: evt.coords.longitude, lat: evt.coords.latitude }
           )} />
