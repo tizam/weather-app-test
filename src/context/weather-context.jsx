@@ -1,5 +1,6 @@
-import axios from 'axios';
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 import { PositionContext } from './position-context';
 
 const api = {
@@ -47,4 +48,8 @@ export const WeatherContextProvider = ({ children }) => {
 			{children}
 		</WeatherContext.Provider>
 	);
+};
+
+WeatherContextProvider.propTypes = {
+	children: PropTypes.object
 };

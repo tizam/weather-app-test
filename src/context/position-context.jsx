@@ -1,5 +1,6 @@
-import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 
 const api = {
 	key: import.meta.env.VITE_MAPBOX_API_TOKEN,
@@ -40,4 +41,8 @@ export const PositionContextProvider = ({ children }) => {
 			{children}
 		</PositionContext.Provider>
 	);
+};
+
+PositionContextProvider.propTypes = {
+	children: PropTypes.object
 };

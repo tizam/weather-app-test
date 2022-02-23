@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import styles from './card.module.css';
 import Loader from '../loader/loader';
 import { WeatherContext } from '../../context/weather-context';
@@ -27,6 +28,10 @@ const Card = ({ day }) => {
 			<p className={styles.temp}>{temp}</p>
 		</div>
 	);
+};
+
+Card.propTypes = {
+	day: PropTypes.object
 };
 
 export default Card;
