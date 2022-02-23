@@ -1,0 +1,16 @@
+.card {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.dayName {
+  font-size: 14px;
+}
+
+.temp {
+  font-weight: bold;
+}

@@ -1,14 +1,14 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useContext } from 'react'
 import Map, { GeolocateControl } from 'react-map-gl';
 import axios from 'axios'
+import styles from './App.module.css'
+import Wrapper from './components/wrapper/wrapper';
+import { PositionContext } from './context/position-context';
 
 function App() {
   const geolocateControlRef = useRef(null)
 
-  const [position, setPosition] = useState({
-    lng: 3.066514,
-    lat: 36.7596531
-  })
+  const { position, setPosition } = useContext(PositionContext)
 
   const [viewState, setViewState] = useState({
     longitude: 3.066514,
@@ -17,7 +17,7 @@ function App() {
   });
 
   return (
-    <div className="App">
+    <div className={styles.app}>
       <Map
         {...viewState}
         onMove={evt => setViewState(evt.viewState)}
@@ -35,6 +35,7 @@ function App() {
             { lng: evt.coords.longitude, lat: evt.coords.latitude }
           )} />
       </Map>
+      <Wrapper />
     </div>
   )
 }
